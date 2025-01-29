@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology & Innovation - RC Clinic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .tech-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tech-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-icon i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .progress-tracker {
+            position: relative;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .eco-section {
+            background-color: var(--light-bg);
+            padding: 4rem 0;
+        }
+
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            aspect-ratio: 16/9;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .tech-progress {
+            height: 8px;
+            background-color: var(--light-bg);
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .tech-progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
+            width: 0;
+            transition: width 1.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <img src="res/logo/logo.png" alt="Logo" height="35" class="d-inline-block align-text-top">           
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tech.html">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tech Hero -->
+    <section class="tech-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Innovation in Rehabilitation</h1>
+                    <p class="lead">Leveraging cutting-edge technology to revolutionize recovery and rehabilitation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Showcase -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Advanced Technologies</h2>
+            <div class="row g-4">
+                <!-- VR/AR Technology -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <h3 class="h4 mb-3">VR/AR Rehabilitation</h3>
+                        <img src="res/tech/VR-Based Therapy.png" alt="VR Rehabilitation" class="img-fluid rounded mb-3">
+                        <p>Immersive virtual reality environments for engaging and effective rehabilitation exercises.</p>
+                        <div class="tech-progress">
+                            <div class="tech-progress-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT Devices -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="h4 mb-3">IoT Devices</h3>
+                        <img src="res/tech/IoT-Enabled Monitoring Devices.png" alt="IoT Devices" class="img-fluid rounded mb-3">
+                        <p>Smart sensors and connected devices for real-time monitoring and progress tracking.</p>
+                        <div class="tech-progress">
+                            <div class="tech-progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robotics -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="h4 mb-3">Robotic Assistance</h3>
+                        <img src="res/tech/Energy-Efficient IoT Devices in Rehabilitation.png" alt="Robotic Assistance" class="img-fluid rounded mb-3">
+                        <p>Advanced robotic systems for precise and controlled movement therapy.</p>
+                        <div class="tech-progress">
+                            <div class="tech-progress-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Progress Tracker Demo -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Digital Progress Tracking</h2>
+            <div class="progress-tracker">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h3 class="h4 mb-4">Real-time Recovery Monitoring</h3>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Movement Range</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Strength Recovery</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Pain Reduction</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="res/b4.png" alt="Progress tracking interface" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="eco-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Sustainability in Rehabilitation</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="stats-counter">85%</div>
+                        <h4>Energy Efficient</h4>
+                        <p>Our IoT devices and equipment are designed for minimal energy consumption</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="stats-counter">90%</div>
+                        <h4>Eco-friendly Materials</h4>
+                        <p>Sustainable materials used in our wearable devices and equipment</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <div class="stats-counter">60%</div>
+                        <h4>Paper Reduction</h4>
+                        <p>Digital documentation and monitoring reduces paper waste</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Gallery -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Technology in Action</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">
+                    <img src="https://static01.nyt.com/images/2021/06/01/multimedia/21sp-hc-vr-print/21sp-hc-vr4-superJumbo.jpg" alt="VR therapy session">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.rehacare.de/cache/picf/5/8/8/8/14142121716361088/rehabilitation-robotics-1200x630.jpg" alt="Robotic rehabilitation">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://d3lkc3n5th01x7.cloudfront.net/wp-content/uploads/2021/04/15052252/Healthcare_IoT_Banner-1-1.png" alt="IoT devices">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe51cLSAtNCyLklVTW85eajMB33g_WcX4lLUINhrvJBMTN3tPxAutL9iRJTf9jrdcrD86L_tXhlOiWCq-N6LQLzTVaCZHQ43EkKr_fI1WXmjtNCmpYF29yTgpPIEvhqWg1xhKSF-w?key=xA504Dk-kUYAgUGP13cNOfP3" alt="Progress tracking">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">RC Clinic KZ</h3>
+                    <p>Kazakhstan's leading digital rehabilitation center, combining innovation with compassionate care.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="nav-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tech.html">Tech</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="programs.html">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html">Blog</a>
+                        </li>
+    
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Astana, Kazakhstan</li>
+                        <li><i class="fas fa-phone me-2"></i> +7 (727) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@rcclinic.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="text-center">
+                <small>&copy; 2025 RC Clinic KZ. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animate progress bars on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.width = entry.target.getAttribute('data-width');
+                    }
+                });
+            });
+
+            document.querySelectorAll('.tech-progress-bar').forEach(bar => {
+                observer.observe(bar);
+            });
+        });
+    </script>
+</body>
+</html>

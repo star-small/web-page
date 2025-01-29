@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - RC Clinic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        .blog-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .blog-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .category-badge {
+            background: var(--light-bg);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .featured-post {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .sidebar-section {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .tag-cloud a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--light-bg);
+            border-radius: 2rem;
+            margin: 0.25rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .tag-cloud a:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        .popular-posts {
+            list-style: none;
+            padding: 0;
+        }
+
+        .popular-posts li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .popular-posts img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            margin-right: 1rem;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-box input {
+            padding-right: 3rem;
+            border-radius: 2rem;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <img src="res/logo/logo.png" alt="Logo" height="35" class="d-inline-block align-text-top">           
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech.html">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Blog Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Featured Post -->
+            <div class="featured-post">
+                <img src="https://media.licdn.com/dms/image/v2/D4E12AQEuWiMwYFRNtA/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706558322371?e=2147483647&v=beta&t=_RV1sJJqzUcgB-mtbG62v010gbnY85Uot2Z9PuLYtYQ" alt="Featured post" class="featured-image">
+                <div class="featured-content">
+                    <span class="category-badge">Featured</span>
+                    <h2>Revolutionary Approaches in Sports Rehabilitation</h2>
+                    <p class="mb-3">Discover how modern technology is transforming athletic recovery and rehabilitation practices.</p>
+                    <a href="#" class="btn btn-light">Read More</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <div class="row g-4">
+                        <!-- Blog Post 1 -->
+                        <div class="col-md-6">
+                            <article class="blog-card">
+                                <img src="https://www.keckmedicine.org/wp-content/uploads/2023/04/USCH_Digital_Faster-Recovery-After-Surgery.jpg" alt="Blog post" class="blog-image">
+                                <div class="blog-content">
+                                    <span class="category-badge">Recovery Tips</span>
+                                    <h3 class="h4">5 Steps to Faster Post-Surgery Recovery</h3>
+                                    <p class="text-muted mb-3">Essential guidelines for optimizing your recovery process after surgery.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">5 min read</small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Blog Post 2 -->
+                        <div class="col-md-6">
+                            <article class="blog-card">
+                                <img src="https://i.ytimg.com/vi/IZdq9mFKVt0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBcl7yx4QBHYhV7Xj3t0w1FEXm-Kw" alt="Blog post" class="blog-image">
+                                <div class="blog-content">
+                                    <span class="category-badge">Technology</span>
+                                    <h3 class="h4">VR in Physical Therapy: A Game Changer</h3>
+                                    <p class="text-muted mb-3">How virtual reality is revolutionizing rehabilitation exercises.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">7 min read</small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Blog Post 3 -->
+                        <div class="col-md-6">
+                            <article class="blog-card">
+                                <img src="https://cdn.vox-cdn.com/thumbor/iZxtqkKEBFXgGnT5biqIJ6-bE0w=/0x0:3977x2741/1200x800/filters:focal(947x376:1583x1012)/cdn.vox-cdn.com/uploads/chorus_image/image/64004272/usa_today_12893507.0.jpg" alt="Blog post" class="blog-image">
+                                <div class="blog-content">
+                                    <span class="category-badge">Success Story</span>
+                                    <h3 class="h4">From Injury to Championship</h3>
+                                    <p class="text-muted mb-3">A professional athlete's journey through rehabilitation to victory.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">10 min read</small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Blog Post 4 -->
+                        <div class="col-md-6">
+                            <article class="blog-card">
+                                <img src="https://storage.googleapis.com/treatspace-prod-media/pracimg/u-2236/shutterstock_2252984651.jpeg" alt="Blog post" class="blog-image">
+                                <div class="blog-content">
+                                    <span class="category-badge">Health Tips</span>
+                                    <h3 class="h4">Maintaining Joint Health in Winter</h3>
+                                    <p class="text-muted mb-3">Expert advice on protecting your joints during cold weather.</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">6 min read</small>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Search -->
+                    <div class="search-box">
+                        <input type="text" class="form-control" placeholder="Search articles...">
+                        <button type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-section">
+                        <h3 class="h5 mb-3">Categories</h3>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Recovery Tips
+                                <span class="badge bg-primary rounded-pill">12</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Technology
+                                <span class="badge bg-primary rounded-pill">8</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Success Stories
+                                <span class="badge bg-primary rounded-pill">5</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                Health Tips
+                                <span class="badge bg-primary rounded-pill">15</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Popular Posts -->
+                    <div class="sidebar-section">
+                        <h3 class="h5 mb-3">Popular Posts</h3>
+                        <ul class="popular-posts">
+                            <li>
+                                <img src="https://www.mghihp.edu/sites/default/files/styles/dojo_16_9_ratio/public/2024-05/ics028_pt_1200x675.png.webp?itok=Mh9R2Vwg" alt="Popular post">
+                                <div>
+                                    <h6 class="mb-1">New Breakthroughs in Physical Therapy</h6>
+                                    <small class="text-muted">2.5K views</small>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="https://quincyspinecenter.com/assets/images/press_up.jpg" alt="Popular post">
+                                <div>
+                                    <h6 class="mb-1">Home Exercises for Back Pain</h6>
+                                    <small class="text-muted">1.8K views</small>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="https://d3gr7hv60ouvr1.cloudfront.net/CACHE/images/products/686bd54df1dc4e08b8ed2262065861b0/d1d9ce957c625d45cc012e3c252825cf.jpg" alt="Popular post">
+                                <div>
+                                    <h6 class="mb-1">Nutrition for Fast Recovery</h6>
+                                    <small class="text-muted">1.2K views</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="sidebar-section">
+                        <h3 class="h5 mb-3">Popular Tags</h3>
+                        <div class="tag-cloud">
+                            <a href="#">Rehabilitation</a>
+                            <a href="#">Sports</a>
+                            <a href="#">Recovery</a>
+                            <a href="#">Technology</a>
+                            <a href="#">Health</a>
+                            <a href="#">Exercise</a>
+                            <a href="#">Therapy</a>
+                            <a href="#">Wellness</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">RC Clinic KZ</h3>
+                    <p>Kazakhstan's leading digital rehabilitation center, combining innovation with compassionate care.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="nav-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tech.html">Tech</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="programs.html">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html">Blog</a>
+                        </li>
+    
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Astana, Kazakhstan</li>
+                        <li><i class="fas fa-phone me-2"></i> +7 (727) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@rcclinic.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="text-center">
+                <small>&copy; 2025 RC Clinic KZ. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

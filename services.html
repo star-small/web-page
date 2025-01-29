@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - RC Clinic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .accordion-button:not(.collapsed) {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .service-category {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .service-header {
+            text-align: center;
+            min-height: 150px; /* Fixed height for header section */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .category-icon i {
+            font-size: 2rem;
+            color: var(--primary-blue);
+        }
+
+        .service-category:hover .category-icon {
+            transform: scale(1.1);
+            background: var(--primary-blue);
+        }
+
+        .service-category:hover .category-icon i {
+            color: white;
+        }
+
+        .service-category img {
+            width: 100%;
+            height: 200px; /* Fixed height for images */
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-category p {
+            flex-grow: 1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 6; /* Limit to 6 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 144px; /* Fixed height for text: 6 lines * 1.6 line-height * 0.95rem font-size */
+        }
+
+        .service-category h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            height: 2.8em; /* Fixed height for 2 lines of title */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-md-6 {
+            margin-bottom: 2rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <img src="res/logo/logo.png" alt="Logo" height="35" class="d-inline-block align-text-top">           
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech.html">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+<!-- Service Categories -->
+<section class="py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Post-operative Rehabilitation -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <h3 class="h4">Post-operative Rehabilitation</h3>
+                    </div>
+                    <img src="res/services/Post-Operative Rehabilitation.png" alt="Post-operative care" class="img-fluid rounded mb-3">
+                    <p>We provide personalized recovery plans tailored to patients recovering from surgeries, such as joint replacements, spinal procedures, or heart surgeries. Our programs include targeted physical therapy, monitored progress through IoT devices, and innovative exercises using VR to speed up recovery and restore mobility.</p>
+                </div>
+            </div>
+
+            <!-- Chronic Illness Management -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3 class="h4">Chronic Illness Management</h3>
+                    </div>
+                    <img src="res/services/Chronic Illness Management.png" alt="Chronic care" class="img-fluid rounded mb-3">
+                    <p>Our chronic illness management programs help patients with conditions like diabetes, arthritis, and cardiovascular diseases. By combining wearable technology for real-time health monitoring and customized therapy plans, we aim to improve quality of life and reduce the burden of long-term health challenges.</p>
+                </div>
+            </div>
+
+            <!-- Sports Injury Recovery -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="h4">Sports Injury Recovery</h3>
+                    </div>
+                    <img src="res/services/Sports Injury Recovery.png" alt="Sports recovery" class="img-fluid rounded mb-3">
+                    <p>Whether you're a professional athlete or a fitness enthusiast, our center offers specialized programs for sports injury recovery. We focus on sports-specific rehabilitation, combining wearable tracking devices, advanced exercises, and recovery coaching to help you return to peak performance safely and quickly.</p>
+                </div>
+            </div>
+
+            <!-- Preventive Health -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="h4">Preventive health and wellness for office workers and seniors</h3>
+                    </div>
+                    <img src="res/services/Preventive Health and Wellness.png" alt="Preventive health" class="img-fluid rounded mb-3">
+                    <p>Designed for office workers, seniors, and those looking to maintain their health, our preventive programs focus on improving posture, reducing repetitive stress injuries, and enhancing mobility. These programs include ergonomic training, gentle exercises, and wellness workshops to prevent future health issues.</p>
+                </div>
+            </div>
+
+            <!-- Neurological Rehabilitation -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="h4">Neurological Rehabilitation</h3>
+                    </div>
+                    <img src="res/services/Neurological Rehabilitation..png" alt="Neurological rehabilitation" class="img-fluid rounded mb-3">
+                    <p>Our neurological rehabilitation services cater to patients recovering from strokes, spinal cord injuries, or other neurological conditions. Using VR/AR-based cognitive exercises, advanced physical therapy, and real-time progress tracking, we help patients regain strength, coordination, and confidence.</p>
+                </div>
+            </div>
+
+            <!-- Pediatric Rehabilitation -->
+            <div class="col-md-6 col-lg-4">
+                <div class="service-category">
+                    <div class="service-header mb-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3 class="h4">Pediatric Rehabilitation</h3>
+                    </div>
+                    <img src="res/services/Pediatric Rehabilitation.png" alt="Pediatric rehabilitation" class="img-fluid rounded mb-3">
+                    <p>Children recovering from injuries, surgeries, or developmental delays receive specialized care at our center. Our programs integrate fun, interactive therapies using AR/VR, age-appropriate exercises, and child-friendly monitoring devices to ensure effective and engaging rehabilitation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FAQ Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            What should I expect during my first visit?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            During your first visit, our specialists will conduct a comprehensive assessment of your condition, review your medical history, and develop a personalized treatment plan tailored to your specific needs and goals. The initial consultation typically takes 60-90 minutes.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How long does a typical rehabilitation program last?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            The duration varies depending on your condition and goals. Post-operative rehabilitation typically ranges from 6-12 weeks, while sports injury recovery might take 4-8 weeks. Our team will provide a detailed timeline during your initial assessment.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            What digital technologies do you use in rehabilitation?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We utilize state-of-the-art technology including:
+                            <ul class="mt-2">
+                                <li>VR/AR systems for immersive therapy</li>
+                                <li>Smart wearables for progress tracking</li>
+                                <li>Robotic assistance devices</li>
+                                <li>AI-powered movement analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Is telerehabilitation available?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we offer telerehabilitation services for suitable cases. This includes virtual consultations, remote progress monitoring, and guided exercise sessions. Our digital platform ensures you receive quality care from the comfort of your home.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Do you work with insurance providers?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Yes, we work with major insurance providers in Kazakhstan. Our administrative team will help verify your coverage and explain any out-of-pocket expenses before beginning treatment.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            What qualifications do your specialists have?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Our team consists of licensed physical therapists, rehabilitation specialists, sports medicine experts, and digital health professionals. All our specialists have advanced degrees and receive continuous training in the latest rehabilitation technologies.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                            How do you track progress during rehabilitation?
+                        </button>
+                    </h2>
+                    <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            We use a combination of traditional assessments and digital tracking tools:
+                            <ul class="mt-2">
+                                <li>Regular physical assessments</li>
+                                <li>Digital movement analysis</li>
+                                <li>Wearable device data</li>
+                                <li>Patient-reported outcome measures</li>
+                                <li>Mobile app progress tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                            What should I bring to my first appointment?
+                        </button>
+                    </h2>
+                    <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Please bring:
+                            <ul class="mt-2">
+                                <li>Government-issued ID</li>
+                                <li>Insurance card (if applicable)</li>
+                                <li>Medical records and imaging results</li>
+                                <li>List of current medications</li>
+                                <li>Comfortable clothing for assessment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">RC Clinic KZ</h3>
+                    <p>Kazakhstan's leading digital rehabilitation center, combining innovation with compassionate care.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="nav-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tech.html">Tech</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="programs.html">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html">Blog</a>
+                        </li>
+    
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Astana, Kazakhstan</li>
+                        <li><i class="fas fa-phone me-2"></i> +7 (727) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@rcclinic.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="text-center">
+                <small>&copy; 2025 RC Clinic KZ. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

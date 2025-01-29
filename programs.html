@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athletic Programs - RC Clinic</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .programs-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('https://college.mayo.edu/media/mccms/content-assets/academics/explore-health-care-careers/athletic-training-career-3321271-0064-hero-tablet.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .program-content {
+            padding: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+
+        .athlete-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .feature-box {
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sport-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .sport-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        .stats-counter {
+            background: linear-gradient(45deg, var(--primary-blue), var(--accent-purple));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-progress {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .progress-step {
+            position: relative;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <img src="res/logo/logo.png" alt="Logo" height="35" class="d-inline-block align-text-top">           
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tech.html">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Programs Hero -->
+    <section class="programs-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-4">Athletic Excellence Programs</h1>
+                    <p class="lead">Specialized rehabilitation and performance enhancement for professional athletes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Categories -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Specialized Programs</h2>
+            <div class="row g-4">
+                <!-- Performance Recovery -->
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <img src="https://humankinetics.me/wp-content/uploads/2021/07/pexels-ketut-subiyanto-4426522-3000x2000.jpg" alt="Performance Recovery" class="program-image">
+                        <div class="program-content">
+                            <div class="sport-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h3 class="h4">Performance Recovery</h3>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Personalized recovery plans</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Progress monitoring</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Performance analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Injury Prevention -->
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <img src="https://www.thekingclinic.co.uk/wp-content/uploads/2020/04/Sports-rehab.jpg" alt="Injury Prevention" class="program-image">
+                        <div class="program-content">
+                            <div class="sport-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h3 class="h4">Injury Prevention</h3>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Movement analysis</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Strength conditioning</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Biomechanical assessment</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sports Rehabilitation -->
+                <div class="col-md-4">
+                    <div class="program-card">
+                        <img src="https://cdn.prod.website-files.com/61791a8b6c568b9710518140/61de7832c1148f16c753ace1_blog-40.jpg" alt="Sports Rehabilitation" class="program-image">
+                        <div class="program-content">
+                            <div class="sport-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <h3 class="h4">Sports Rehabilitation</h3>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Sport-specific protocols</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Advanced technology</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Progressive training</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Statistics -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Program Success Rates</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stats-counter">
+                        <div class="stats-number">95%</div>
+                        <p>Return to Sport Rate</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-counter">
+                        <div class="stats-number">500+</div>
+                        <p>Athletes Treated</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-counter">
+                        <div class="stats-number">30%</div>
+                        <p>Performance Improvement</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-counter">
+                        <div class="stats-number">48h</div>
+                        <p>Average Response Time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athlete Testimonials -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Athlete Success Stories</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="res/portrait/Azamat.png" alt="Athlete" class="athlete-image">
+                            <div>
+                                <h4 class="mb-1">Azamat Nurlybekov</h4>
+                                <p class="text-muted mb-0">Professional Football Player</p>
+                            </div>
+                        </div>
+                        <p>"The personalized recovery program helped me return to the field stronger than ever. The technology-driven approach made a significant difference in my rehabilitation."</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="res/portrait/Dinara.png" alt="Athlete" class="athlete-image">
+                            <div>
+                                <h4 class="mb-1">Dinara Saduakassova</h4>
+                                <p class="text-muted mb-0">Olympic Athlete</p>
+                            </div>
+                        </div>
+                        <p>"The comprehensive approach to injury prevention has been invaluable. The team's expertise and advanced technology have helped me maintain peak performance."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recovery Timeline -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Recovery Journey</h2>
+            <div class="timeline-progress">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="progress-step">
+                            <h4 class="h5">Initial Assessment</h4>
+                            <p>Comprehensive evaluation and goal setting</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="progress-step">
+                            <h4 class="h5">Custom Program</h4>
+                            <p>Personalized rehabilitation plan</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="progress-step">
+                            <h4 class="h5">Active Recovery</h4>
+                            <p>Monitored rehabilitation process</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="progress-step">
+                            <h4 class="h5">Return to Sport</h4>
+                            <p>Performance optimization and monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">RC Clinic KZ</h3>
+                    <p>Kazakhstan's leading digital rehabilitation center, combining innovation with compassionate care.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="nav-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html">About us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="services.html">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tech.html">Tech</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="programs.html">Programs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="blog.html">Blog</a>
+                        </li>
+    
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="footer-title h5">Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Astana, Kazakhstan</li>
+                        <li><i class="fas fa-phone me-2"></i> +7 (727) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@rcclinic.kz</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="mt-4 mb-3 border-secondary">
+            <div class="text-center">
+                <small>&copy; 2025 RC Clinic KZ. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

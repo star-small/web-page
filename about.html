@@ -3,128 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RC Clinic - Kazakhstan's First Digital Rehabilitation Center</title>
+    <title>About Us - DigiRehab KZ</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-<style>
+    <style>
 
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('res/backgrmain.png');
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/600');
             background-size: cover;
             background-position: center;
-            padding: 8rem 0;
+            padding: 6rem 0;
             color: white;
             position: relative;
         }
 
-        .hero-section::before {
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
             content: '';
             position: absolute;
+            width: 2px;
+            background: var(--primary-blue);
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(43, 108, 176, 0.3), rgba(128, 90, 213, 0.3));
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
         }
 
-        .hero-section .container {
+        .timeline-item {
+            margin-bottom: 3rem;
             position: relative;
-            z-index: 2;
         }
 
-        .hero-text {
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .achievement-banner {
-            background-color: var(--primary-blue);
-            color: white;
-        }
-
-        .custom-btn-primary {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
+        .timeline-content {
+            padding: 1.5rem;
+            background: white;
             border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: calc(50% - 2rem);
+            position: relative;
         }
 
-        .custom-btn-primary:hover {
-            background-color: #2457A0;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
         }
 
-        .custom-btn-secondary {
-            background-color: transparent;
-            color: white;
-            padding: 0.75rem 2rem;
-            border: 2px solid white;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .timeline-item::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: var(--primary-blue);
+            border: 4px solid white;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
         }
 
-        .custom-btn-secondary:hover {
-            background-color: white;
-            color: var(--accent-purple);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        .timeline-date {
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
         }
 
-        .value-card {
-            background-color: var(--light-bg);
-            border-radius: 1rem;
+        .values-card {
             padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             height: 100%;
             transition: transform 0.3s ease;
         }
 
-        .value-card:hover {
+        .values-card:hover {
             transform: translateY(-5px);
         }
 
-        .icon-wrapper {
-            width: 3rem;
-            height: 3rem;
-            background-color: var(--primary-blue);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-
-        .icon-wrapper i {
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand {
-            color: var(--primary-blue);
-            font-weight: bold;
-        }
-
-        .nav-link {
-            color: var(--dark-text);
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--primary-blue);
-        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -165,70 +123,80 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8 mx-auto text-center hero-text">
-                    <h1 class="display-3 fw-bold mb-4">Kazakhstan's First Digital Rehabilitation Center</h1>
-                    <p class="lead mb-5 fs-4">Pioneering digital healthcare solutions for enhanced recovery and rehabilitation</p>
-                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="#book" class="custom-btn-primary text-decoration-none btn-lg">
-                            Book a Consultation <i class="fas fa-calendar-alt ms-2"></i>
-                        </a>
-                        <a href="#explore" class="custom-btn-secondary text-decoration-none btn-lg">
-                            Explore Our Technology <i class="fas fa-chevron-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievement Banner -->
-    <div class="achievement-banner py-3">
-        <div class="container">
-            <p class="text-center mb-0 lead">
-                Proudly partnered with leading global rehabilitation centers
-            </p>
-        </div>
-    </div>
-
-    <!-- Mission and Values -->
+    <!-- Mission & Overview -->
     <section class="py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Our Mission & Values</h2>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="h4 mb-3">Patient-Centered Care</h3>
-                        <p class="mb-0">Tailored rehabilitation programs designed for individual needs and goals</p>
-                    </div>
+                <div class="col-md-6">
+                    <h2 class="mb-4">Our Mission</h2>
+                    <p class="lead">To revolutionize rehabilitation services in Kazakhstan through innovative digital solutions and personalized care approaches.</p>
+                    <p>At DigiRehab KZ, we combine cutting-edge technology with evidence-based rehabilitation practices to deliver optimal outcomes for our patients. Our innovation-first approach ensures that we stay at the forefront of medical rehabilitation.</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h3 class="h4 mb-3">Innovation in Recovery</h3>
-                        <p class="mb-0">State-of-the-art technology integrated with proven rehabilitation methods</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="value-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-award"></i>
-                        </div>
-                        <h3 class="h4 mb-3">Excellence in Care</h3>
-                        <p class="mb-0">Committed to achieving the highest standards in rehabilitation services</p>
+                <div class="col-md-6">
+                    <h2 class="mb-4">Innovation-First Approach</h2>
+                    <div class="values-card">
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="fas fa-robot text-primary me-2"></i>
+                                Advanced robotics and AI-assisted therapy
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-mobile-alt text-primary me-2"></i>
+                                Remote monitoring and telerehabilitation
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-vr-cardboard text-primary me-2"></i>
+                                Virtual reality rehabilitation programs
+                            </li>
+                            <li>
+                                <i class="fas fa-chart-line text-primary me-2"></i>
+                                Data-driven progress tracking
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Timeline Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022</div>
+                        <h3 class="h5">Center Foundation</h3>
+                        <p>Establishment of Kazakhstan's first digital rehabilitation center</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="h5">Technology Integration</h3>
+                        <p>Implementation of advanced robotics and VR rehabilitation systems</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3 class="h5">Global Partnership</h3>
+                        <p>Collaboration with leading international rehabilitation centers</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3 class="h5">Expansion</h3>
+                        <p>Opening of satellite centers across Kazakhstan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -285,6 +253,7 @@
             </div>
         </div>
     </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,93 @@
+:root {
+    --primary-blue: #2B6CB0;
+    --secondary-green: #48BB78;
+    --accent-purple: #805AD5;
+    --dark-text: #2D3748;
+    --light-bg: #F7FAFC;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--dark-text);
+}
+.footer {
+    background-color: var(--dark-text);
+    color: white;
+    padding: 4rem 0 2rem;
+}
+
+.footer-title {
+    color: var(--secondary-green);
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-green);
+}
+
+.social-links {
+    font-size: 1.5rem;
+}
+
+.social-links a {
+    color: white;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-green);
+}
+.navbar {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.navbar-light {
+    padding: 0.75rem 1rem;
+}
+
+.navbar .nav-link {
+    color: var(--dark-text);
+    transition: color 0.3s ease;
+    position: relative;
+    padding: 0.5rem 1rem !important;
+    margin: 0 0.25rem;
+}
+
+.navbar .nav-link:hover {
+    color: var(--primary-blue);
+}
+
+.navbar .nav-link.active {
+    color: var(--primary-blue);
+}
+
+.navbar .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    height: 2px;
+    background-color: var(--primary-blue);
+    border-radius: 1px;
+}
