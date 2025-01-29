@@ -244,18 +244,18 @@
     </section>
 
 
-        <!-- Patient Counter Section -->
-        <section class="container">
-            <div class="patient-counter text-center">
-                <div class="progress-count">0</div>
-                <h3>Patients Successfully Treated</h3>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
+    <!-- Patient Counter Section -->
+    <section class="container">
+        <div class="patient-counter text-center">
+            <div class="progress-count">0</div>
+            <h3>Patients Successfully Treated</h3>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
-        </section>
+        </div>
+    </section>
 
-<!-- Success Stories Section -->
+    <!-- Success Stories Section -->
 <section class="success-stories py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
@@ -580,5 +580,40 @@
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+                // Patient Counter Animation
+        const counter = document.querySelector('.progress-count');
+        const progressBar = document.querySelector('.progress-bar');
+        const targetCount = 5000;
+        let currentCount = 0;
+
+        function updateCounter() {
+            if (currentCount < targetCount) {
+                currentCount += 50;
+                counter.textContent = currentCount.toLocaleString();
+                progressBar.style.width = (currentCount / targetCount * 100) + '%';
+                setTimeout(updateCounter, 50);
+            }
+        }
+
+        // Start counter when element is in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) updateCounter();
+        });
+        counterObserver.observe(counter);
+
+        // Lightbox functionality
+        const lightbox = document.getElementById('imageLightbox');
+        document.querySelectorAll('.gallery-image').forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.querySelector('img').src = image.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+    </script>
 </body>
 </html>
