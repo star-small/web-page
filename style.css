@@ -1,71 +1,122 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+/* Root variables */
 :root {
     --primary-blue: #2B6CB0;
     --secondary-green: #48BB78;
     --accent-purple: #805AD5;
     --dark-text: #2D3748;
     --light-bg: #F7FAFC;
+    
+    /* Font families */
+    --font-primary: 'Roboto', sans-serif;
+    --font-headers: 'Lato', sans-serif;
+    --font-news: 'Playfair Display', serif;
 }
 
+/* Base styles */
 body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-primary);
     color: var(--dark-text);
-}
-.footer {
-    background-color: var(--dark-text);
-    color: white;
-    padding: 4rem 0 2rem;
+    font-weight: 400;
 }
 
-.footer-title {
-    color: var(--secondary-green);
-    margin-bottom: 1.5rem;
+/* Header styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-headers);
+    font-weight: 900;
 }
 
-.footer-links {
-    list-style: none;
-    padding: 0;
+/* News section styles */
+.news-section {
+    font-family: var(--font-news);
+    font-optical-sizing: auto;
 }
 
-.footer-links li {
-    margin-bottom: 0.75rem;
+.news-section h2 {
+    font-weight: 700;
 }
 
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.news-section p {
+    font-weight: 400;
 }
 
-.footer-links a:hover {
-    color: var(--secondary-green);
+/* Utility classes for fonts */
+.text-roboto {
+    font-family: var(--font-primary);
+    font-optical-sizing: auto;
 }
 
-.social-links {
-    font-size: 1.5rem;
+.text-roboto-light {
+    font-family: var(--font-primary);
+    font-weight: 300;
 }
 
-.social-links a {
-    color: white;
-    margin-right: 1rem;
-    transition: color 0.3s ease;
+.text-roboto-regular {
+    font-family: var(--font-primary);
+    font-weight: 400;
 }
 
-.social-links a:hover {
-    color: var(--secondary-green);
+.text-roboto-medium {
+    font-family: var(--font-primary);
+    font-weight: 500;
 }
+
+.text-roboto-bold {
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+
+.text-playfair {
+    font-family: var(--font-news);
+    font-optical-sizing: auto;
+}
+
+.text-playfair-regular {
+    font-family: var(--font-news);
+    font-weight: 400;
+}
+
+.text-playfair-bold {
+    font-family: var(--font-news);
+    font-weight: 700;
+}
+
+.text-lato {
+    font-family: var(--font-headers);
+}
+
+.text-lato-regular {
+    font-family: var(--font-headers);
+    font-weight: 400;
+}
+
+.text-lato-bold {
+    font-family: var(--font-headers);
+    font-weight: 700;
+}
+
+.text-lato-black {
+    font-family: var(--font-headers);
+    font-weight: 900;
+}
+
+/* Update existing navbar styles */
 .navbar {
     background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navbar.navbar-light {
-    padding: 0.75rem 1rem;
+    font-family: var(--font-primary);
 }
 
 .navbar .nav-link {
+    font-family: var(--font-primary);
+    font-weight: 500;
     color: var(--dark-text);
     transition: color 0.3s ease;
     position: relative;
@@ -73,21 +124,17 @@ body {
     margin: 0 0.25rem;
 }
 
-.navbar .nav-link:hover {
-    color: var(--primary-blue);
+/* Update footer styles */
+.footer {
+    background-color: var(--dark-text);
+    color: white;
+    padding: 4rem 0 2rem;
+    font-family: var(--font-primary);
 }
 
-.navbar .nav-link.active {
-    color: var(--primary-blue);
-}
-
-.navbar .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 1rem;
-    right: 1rem;
-    height: 2px;
-    background-color: var(--primary-blue);
-    border-radius: 1px;
+.footer-title {
+    font-family: var(--font-headers);
+    font-weight: 900;
+    color: var(--secondary-green);
+    margin-bottom: 1.5rem;
 }
