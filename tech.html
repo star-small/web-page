@@ -368,7 +368,18 @@
             </div>
         </div>
     </footer>
-
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="" class="img-fluid" alt="Gallery image">
+            </div>
+          </div>
+        </div>
+      </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
         // Animate progress bars on scroll
@@ -386,5 +397,14 @@
             });
         });
     </script>
+    <script>
+        document.querySelectorAll('.gallery-item img').forEach(image => {
+          image.addEventListener('click', e => {
+            const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+            document.querySelector('#imageModal .modal-body img').src = e.target.src;
+            modal.show();
+          });
+        });
+        </script>
 </body>
 </html>
