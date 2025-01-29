@@ -601,19 +601,6 @@
             if (entries[0].isIntersecting) updateCounter();
         });
         counterObserver.observe(counter);
-
-        // Lightbox functionality
-        const lightbox = document.getElementById('imageLightbox');
-        document.querySelectorAll('.gallery-image').forEach(image => {
-            image.addEventListener('click', () => {
-                lightbox.querySelector('img').src = image.src;
-                lightbox.classList.add('active');
-            });
-        });
-
-        lightbox.addEventListener('click', () => {
-            lightbox.classList.remove('active');
-        });
     </script>
 </body>
 </html>
