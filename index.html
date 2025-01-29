@@ -173,14 +173,13 @@
                     <h1 class="display-3 fw-bold mb-4">Kazakhstan's First Digital Rehabilitation Center</h1>
                     <p class="lead mb-5 fs-4">Pioneering digital healthcare solutions for enhanced recovery and rehabilitation</p>
                     <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
-                        <a href="#book" class="custom-btn-primary text-decoration-none btn-lg">
+                        <button type="button" class="custom-btn-primary text-decoration-none btn-lg" data-bs-toggle="modal" data-bs-target="#consultationModal">
                             Book a Consultation <i class="fas fa-calendar-alt ms-2"></i>
-                        </a>
-                        <a href="#explore" class="custom-btn-secondary text-decoration-none btn-lg">
+                        </button>
+                        <button type="button" class="custom-btn-secondary text-decoration-none btn-lg" data-bs-toggle="modal" data-bs-target="#technologyModal">
                             Explore Our Technology <i class="fas fa-chevron-right ms-2"></i>
-                        </a>
-                    </div>
-                </div>
+                        </button>
+                    </div>                </div>
             </div>
         </div>
     </section>
@@ -229,6 +228,77 @@
             </div>
         </div>
     </section>
+    <!-- Consultation Modal -->
+<div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="consultationModalLabel">Book a Consultation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="preferredDate" class="form-label">Preferred Date</label>
+                        <input type="date" class="form-control" id="preferredDate" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="custom-btn-primary">Submit Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Technology Modal -->
+<div class="modal fade" id="technologyModal" tabindex="-1" aria-labelledby="technologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="technologyModalLabel">Our Technology</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h6>Digital Rehabilitation Platform</h6>
+                        <p>State-of-the-art digital solutions for personalized rehabilitation programs.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Motion Tracking Systems</h6>
+                        <p>Advanced motion capture technology for precise movement analysis and therapy.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Telerehabilitation Services</h6>
+                        <p>Remote rehabilitation sessions with real-time monitoring and feedback.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Progress Analytics</h6>
+                        <p>Data-driven recovery tracking and performance analysis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="tech.html" class="custom-btn-primary text-decoration-none">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
