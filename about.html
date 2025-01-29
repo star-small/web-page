@@ -82,7 +82,42 @@
         .values-card:hover {
             transform: translateY(-5px);
         }
+        .carousel {
+    background-color: var(--light-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+}
 
+.carousel-item img {
+    object-fit: contain;  /* Changed from cover to contain to preserve aspect ratio */
+    height: 400px;
+    background-color: white; /* Added white background for certificates */
+}
+
+.carousel-caption {
+    padding: 1rem;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+}
+
+.carousel-indicators {
+    bottom: -40px;
+}
+
+.carousel-indicators button {
+    background-color: var(--primary-blue) !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+    margin: 0 5px !important;
+}
+
+/* Added for better image display */
+.carousel-inner {
+    background-color: white;
+}
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
@@ -158,6 +193,82 @@
             </div>
         </div>
     </section>
+
+
+    <!-- Certificates Carousel -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Certifications & Accreditations</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div id="certificatesCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#certificatesCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner rounded-4 shadow">
+                        <div class="carousel-item active">
+                            <img src="res/carousel/cert1.png" class="d-block w-100" alt="Certification 1">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3">
+                                <h5>Medical Device Certification</h5>
+                                <p>International Quality Standard</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="res/carousel/cert2.png" class="d-block w-100" alt="Certification 2">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3">
+                                <h5>Healthcare Excellence</h5>
+                                <p>Quality Management System</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="res/carousel/cert3.png" class="d-block w-100" alt="Certification 3">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3">
+                                <h5>Digital Health Standards</h5>
+                                <p>Technology Implementation Excellence</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="res/carousel/cert4.png" class="d-block w-100" alt="Certification 4">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3">
+                                <h5>Professional Excellence</h5>
+                                <p>Healthcare Service Standards</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="res/carousel/ab3qd3vd5duxutvdt5v6t6s11lc0x31u.png" class="d-block w-100" alt="Certification 5">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3">
+                                <h5>International Accreditation</h5>
+                                <p>Healthcare Facility Standards</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#certificatesCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#certificatesCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                
+                <!-- Caption Below Carousel -->
+                <div class="text-center mt-4">
+                    <p class="text-muted">Our commitment to excellence is validated by international certifications and accreditations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Timeline Section -->
     <section class="py-5 bg-light">
