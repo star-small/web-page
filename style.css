@@ -138,3 +138,88 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--secondary-green);
     margin-bottom: 1.5rem;
 }
+
+.search-container {
+    position: relative;
+    max-width: 300px;
+    margin-left: auto;
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: none;
+}
+
+.search-container:focus-within .search-results {
+    display: block;
+}
+
+.patient-counter {
+    background: linear-gradient(45deg, var(--primary-blue), var(--accent-purple));
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+}
+
+.progress-count {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Lazy loading styles */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-image.loaded {
+    opacity: 1;
+}
+
+/* Success Stories Slider */
+.success-stories {
+    padding: 4rem 0;
+    background: var(--light-bg);
+}
+
+.story-card {
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    margin: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Lightbox styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1050;
+    padding: 2rem;
+}
+
+.lightbox.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+}
