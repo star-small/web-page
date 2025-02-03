@@ -44,28 +44,71 @@
         return 0;
     }
 
-    // 59. JS RegExp - Phone number validation
     function validatePhoneNumber(phone) {
+        if (!phone) return false;
         const phoneRegex = /^\+7\s?\(\d{3}\)\s?\d{3}-?\d{2}-?\d{2}$/;
         return phoneRegex.test(phone);
     }
 
-    // 61. JS Errors - Form validation with error handling
+    function validateEmail(email) {
+        if (!email) return false;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validateName(name) {
+        if (!name) return false;
+        return name.trim().length >= 2;
+    }
+
+    function validateDate(date) {
+        if (!date) return false;
+        const selectedDate = new Date(date);
+        const today = new Date();
+        return selectedDate >= today;
+    }
+
     function validateForm(formData) {
+        console.log('Validating form data:', formData);
+        
         try {
-            if (!formData.name || formData.name.length < 2) {
-                throw new Error('Please enter a valid name');
+            // For newsletter form (only requires email)
+            if (formData.hasOwnProperty('email') && !formData.hasOwnProperty('name')) {
+                if (!validateEmail(formData.email)) {
+                    alert('Please enter a valid email address');
+                    return false;
+                }
+                return true;
             }
-            if (!validatePhoneNumber(formData.phone)) {
-                throw new Error('Please enter a valid phone number in format: +7 (XXX) XXX-XX-XX');
+
+            // For contact forms
+            if (!validateName(formData.name)) {
+                alert('Please enter a valid name (at least 2 characters)');
+                return false;
             }
+
+            if (formData.hasOwnProperty('email') && !validateEmail(formData.email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+
+            if (formData.hasOwnProperty('phone') && !validatePhoneNumber(formData.phone)) {
+                alert('Please enter a valid phone number in format: +7 (XXX) XXX-XX-XX');
+                return false;
+            }
+
+            if (formData.hasOwnProperty('date') && !validateDate(formData.date)) {
+                alert('Please select a valid future date');
+                return false;
+            }
+
             return true;
         } catch (error) {
-            console.error('Validation error:', error.message);
+            console.error('Validation error:', error);
+            alert('An error occurred during form validation. Please check your inputs.');
             return false;
         }
     }
-
     // 35-38. JS Dates
     function formatAppointmentDate(date) {
         const options = { 
@@ -109,15 +152,14 @@
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     const formData = {
-                        name: form.querySelector('#name').value,
-                        email: form.querySelector('#email').value,
-                        phone: form.querySelector('#phone').value,
-                        date: form.querySelector('#preferredDate').value
+                        name: form.querySelector('#name')?.value,
+                        email: form.querySelector('#email')?.value,
+                        phone: form.querySelector('#phone')?.value,
+                        date: form.querySelector('#preferredDate')?.value
                     };
 
                     if (validateForm(formData)) {
                         console.log('Form submitted:', formData);
-                        // Here you would typically send this to your backend
                         alert('Thank you for your submission! We will contact you shortly.');
                         modal.querySelector('button[data-bs-dismiss="modal"]').click();
                         form.reset();
@@ -126,6 +168,36 @@
             }
         }
     }
+
+    // Setup form handlers
+    function setupFormHandlers() {
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            if (!form.classList.contains('modal-form')) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get all form inputs
+                    const formData = {};
+                    form.querySelectorAll('input, textarea, select').forEach(input => {
+                        if (input.name) {
+                            formData[input.name] = input.value;
+                        }
+                    });
+
+                    console.log('Processing form submission:', formData);
+
+                    if (validateForm(formData)) {
+                        console.log('Form submitted successfully:', formData);
+                        alert('Thank you for your submission! We will contact you shortly.');
+                        form.reset();
+                    }
+                });
+            }
+        });
+    }
+
+
 
     // Initialize patient counter animation
     function initializePatientCounter() {
@@ -207,7 +279,6 @@
 
     // 20. JS Events - Event handlers
     document.addEventListener('DOMContentLoaded', function() {
-        // Initialize all components
         try {
             initializeSearchBar();
             initializeConsultationModal();

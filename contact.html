@@ -195,37 +195,37 @@
                 <div class="col-lg-7">
                     <div class="contact-card">
                         <h2 class="mb-4">Send Us a Message</h2>
-                        <form>
+                        <form id="contactForm">
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your first name">
+                                    <input type="text" name="firstName" class="form-control" placeholder="Enter your first name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" placeholder="Enter your last name">
+                                    <input type="text" name="lastName" class="form-control" placeholder="Enter your last name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Email</label>
-                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                    <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Phone</label>
-                                    <input type="tel" class="form-control" placeholder="Enter your phone number">
+                                    <input type="tel" name="phone" class="form-control" placeholder="+7 (XXX) XXX-XX-XX" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Service Interest</label>
-                                    <select class="form-select">
-                                        <option selected>Choose a service...</option>
-                                        <option>Post-operative Rehabilitation</option>
-                                        <option>Sports Injury Recovery</option>
-                                        <option>Chronic Illness Management</option>
-                                        <option>Athletic Performance</option>
+                                    <select class="form-select" name="service" required>
+                                        <option value="" selected disabled>Choose a service...</option>
+                                        <option value="post-op">Post-operative Rehabilitation</option>
+                                        <option value="sports">Sports Injury Recovery</option>
+                                        <option value="chronic">Chronic Illness Management</option>
+                                        <option value="athletic">Athletic Performance</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Message</label>
-                                    <textarea class="form-control" rows="4" placeholder="How can we help you?"></textarea>
+                                    <textarea class="form-control" name="message" rows="4" placeholder="How can we help you?" required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary custom-btn">
