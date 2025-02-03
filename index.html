@@ -449,6 +449,7 @@
     </div>
 
     <!-- Consultation Modal -->
+<!-- Consultation Modal -->
 <div class="modal fade" id="consultationModal" tabindex="-1" aria-labelledby="consultationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -456,30 +457,47 @@
                 <h5 class="modal-title" id="consultationModalLabel">Book a Consultation</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form>
+            <form id="consultationForm">
+                <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
+                        <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" class="form-control" id="phone" required>
+                        <input type="tel" class="form-control" id="phone" name="phone" 
+                               placeholder="+7 (XXX) XXX-XX-XX" required>
                     </div>
                     <div class="mb-3">
                         <label for="preferredDate" class="form-label">Preferred Date</label>
-                        <input type="date" class="form-control" id="preferredDate" required>
+                        <input type="datetime-local" class="form-control" id="preferredDate" name="preferredDate">
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="custom-btn-primary">Submit Request</button>
-            </div>
+                    <div class="mb-3">
+                        <label for="service" class="form-label">Select Service</label>
+                        <select class="form-select" id="service" name="service" required>
+                            <option value="">Choose a service...</option>
+                            <option value="1">Post-operative Rehabilitation</option>
+                            <option value="2">Chronic Illness Management</option>
+                            <option value="3">Sports Injury Recovery</option>
+                            <option value="4">Preventive Health</option>
+                            <option value="5">Neurological Rehabilitation</option>
+                            <option value="6">Pediatric Rehabilitation</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" required min="0" max="120">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn custom-btn-primary">Submit Request</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

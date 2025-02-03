@@ -123,84 +123,25 @@
 
     // Initialize search functionality
     function initializeSearchBar() {
-        // Available pages and content for search
-        const searchableContent = [
-            { title: 'Home', url: 'index.html' },
-            { title: 'About Us', url: 'about.html' },
-            { title: 'Services', url: 'services.html' },
-            { title: 'Technology', url: 'tech.html' },
-            { title: 'Programs', url: 'programs.html' },
-            { title: 'Contact', url: 'contact.html' },
-            { title: 'Blog', url: 'blog.html' },
-            // Services
-            { title: 'Post-operative Rehabilitation', url: 'services.html#post-op' },
-            { title: 'Sports Injury Recovery', url: 'services.html#sports' },
-            { title: 'Chronic Illness Management', url: 'services.html#chronic' },
-            { title: 'Neurological Rehabilitation', url: 'services.html#neuro' },
-            { title: 'Pediatric Rehabilitation', url: 'services.html#pediatric' },
-            // Technology
-            { title: 'VR Rehabilitation', url: 'tech.html#vr' },
-            { title: 'Robotic Therapy', url: 'tech.html#robotic' }
-        ];
+        const searchInput = document.querySelector('.search-container input');
+        const searchResults = document.querySelector('.search-results');
 
-        const searchContainer = document.querySelector('.search-container');
-        if (!searchContainer) return;
+        if (searchInput && searchResults) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                // Filter navigation items based on search term
+                const navItems = document.querySelectorAll('.nav-link');
+                const results = Array.from(navItems)
+                    .filter(item => item.textContent.toLowerCase().includes(searchTerm))
+                    .map(item => item.textContent);
 
-        const searchInput = searchContainer.querySelector('input[type="search"]');
-        const resultsContainer = searchContainer.querySelector('.search-results');
-        if (!searchInput || !resultsContainer) return;
-
-        // Initially hide results
-        resultsContainer.style.display = 'none';
-
-        // Handle search input
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            
-            if (searchTerm === '') {
-                resultsContainer.style.display = 'none';
-                return;
-            }
-
-            // Filter content based on search term
-            const matchedResults = searchableContent.filter(item => 
-                item.title.toLowerCase().includes(searchTerm)
-            );
-
-            // Display results
-            if (matchedResults.length > 0) {
-                resultsContainer.innerHTML = matchedResults
-                    .map(result => `
-                        <div class="search-result-item" data-url="${result.url}">
-                            ${result.title}
-                        </div>
-                    `)
+                // Display results
+                searchResults.innerHTML = results
+                    .map(result => `<div class="search-result-item">${result}</div>`)
                     .join('');
-                resultsContainer.style.display = 'block';
-
-                // Add click handlers to results
-                const resultItems = resultsContainer.querySelectorAll('.search-result-item');
-                resultItems.forEach(item => {
-                    item.addEventListener('click', () => {
-                        window.location.href = item.dataset.url;
-                        resultsContainer.style.display = 'none';
-                        searchInput.value = '';
-                    });
-                });
-            } else {
-                resultsContainer.innerHTML = '<div class="search-result-item no-results">No results found</div>';
-                resultsContainer.style.display = 'block';
-            }
-        });
-
-        // Close search results when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!searchContainer.contains(e.target)) {
-                resultsContainer.style.display = 'none';
-            }
-        });
+            });
+        }
     }
-
 
     // Handle consultation modal
     function initializeConsultationModal() {
@@ -228,60 +169,29 @@
         }
     }
 
-    // Setup form handlers
-    function setupFormHandlers() {
-        const forms = document.querySelectorAll('form');
-        forms.forEach(form => {
-            if (!form.classList.contains('modal-form')) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get all form inputs
-                    const formData = {};
-                    form.querySelectorAll('input, textarea, select').forEach(input => {
-                        if (input.name) {
-                            formData[input.name] = input.value;
-                        }
-                    });
-
-                    console.log('Processing form submission:', formData);
-
-                    if (validateForm(formData)) {
-                        console.log('Form submitted successfully:', formData);
-                        alert('Thank you for your submission! We will contact you shortly.');
-                        form.reset();
-                    }
-                });
-            }
-        });
-    }
 
 
-
+    
     // Initialize patient counter animation
     function initializePatientCounter() {
-        // Patient Counter Animation
         const counter = document.querySelector('.progress-count');
-        const progressBar = document.querySelector('.progress-bar');
-        const targetCount = 5000;
-        let currentCount = 0;
+        if (!counter) return; // Exit if counter element doesn't exist
 
-        function updateCounter() {
-            if (currentCount < targetCount) {
-                currentCount += 50;
-                counter.textContent = currentCount.toLocaleString();
-                progressBar.style.width = (currentCount / targetCount * 100) + '%';
-                setTimeout(updateCounter, 50);
+        let count = 0;
+        const target = 1000; // Total patients treated
+        const duration = 2000; // Animation duration in milliseconds
+        const step = function(timestamp) {
+            if (!start) start = timestamp;
+            const progress = timestamp - start;
+            count = Math.min(Math.floor((progress / duration) * target), target);
+            counter.textContent = count.toLocaleString();
+            if (progress < duration) {
+                window.requestAnimationFrame(step);
             }
-        }
-
-        // Start counter when element is in view
-        const counterObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) updateCounter();
-        });
-        counterObserver.observe(counter);
-
-}
+        };
+        let start = null;
+        window.requestAnimationFrame(step);
+    }
 
     // Initialize tech section progress bars
     function initializeTechProgress() {
@@ -339,9 +249,72 @@
             });
         });
     }
+    // Initialize services display
+    function initializeServicesDisplay() {
+        const servicesList = document.querySelector('.row.g-4');
+        if (servicesList) {
+            // Display cost on each service card
+            document.querySelectorAll('.service-category').forEach((card, index) => {
+                if (services[index]) {
+                    const costDiv = document.createElement('div');
+                    costDiv.className = 'mt-3 text-primary fw-bold';
+                    costDiv.textContent = `Cost: ${services[index].cost.toLocaleString()} ₸`;
+                    card.querySelector('.service-content, .program-content').appendChild(costDiv);
+                }
+            });
+        }
+    }
+
+    // Handle consultation booking
+    function handleConsultationBooking() {
+        const form = document.querySelector('#consultationModal form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = form.querySelector('#name').value;
+                const age = parseInt(form.querySelector('#phone').value) || 30; // Using phone field for demo
+                const selectedService = services[0]; // Default to first service for demo
+                
+                // Create new patient
+                const patient = new Patient(name, age, [selectedService]);
+                
+                // Calculate total cost with any applicable discounts
+                const totalCost = calculateTotalCost([selectedService], age);
+                
+                // Format appointment date
+                const appointmentDate = new Date(form.querySelector('#preferredDate').value);
+                const formattedDate = formatAppointmentDate(appointmentDate);
+                
+                // Display booking confirmation
+                alert(
+                    `Booking Confirmation\n\n` +
+                    `${patient.displayInfo()}\n` +
+                    `Appointment: ${formattedDate}\n` +
+                    `Service: ${selectedService.name}\n` +
+                    `Total Cost: ${totalCost.toLocaleString()} ₸` +
+                    (getDiscountRate(age) > 0 ? `\n(Includes ${getDiscountRate(age) * 100}% discount)` : '')
+                );
+                
+                // Increment patient count
+                patientCount++;
+                
+                // Reset form
+                form.reset();
+                
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('consultationModal'));
+                if (modal) {
+                    modal.hide();
+                }
+            });
+        }
+    }
 
     // 20. JS Events - Event handlers
     document.addEventListener('DOMContentLoaded', function() {
+        // Initialize all components
         try {
             initializeSearchBar();
             initializeConsultationModal();
