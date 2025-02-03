@@ -6,7 +6,8 @@
     <title>RC Clinic - Kazakhstan's First Digital Rehabilitation Center</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-<style>
+    <script src="js/main.js"></script>
+    <style>
 
         .hero-section {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('res/backgrmain.png');
@@ -580,27 +581,5 @@
         </div>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-                // Patient Counter Animation
-        const counter = document.querySelector('.progress-count');
-        const progressBar = document.querySelector('.progress-bar');
-        const targetCount = 5000;
-        let currentCount = 0;
-
-        function updateCounter() {
-            if (currentCount < targetCount) {
-                currentCount += 50;
-                counter.textContent = currentCount.toLocaleString();
-                progressBar.style.width = (currentCount / targetCount * 100) + '%';
-                setTimeout(updateCounter, 50);
-            }
-        }
-
-        // Start counter when element is in view
-        const counterObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) updateCounter();
-        });
-        counterObserver.observe(counter);
-    </script>
 </body>
 </html>
