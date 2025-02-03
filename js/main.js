@@ -123,25 +123,84 @@
 
     // Initialize search functionality
     function initializeSearchBar() {
-        const searchInput = document.querySelector('.search-container input');
-        const searchResults = document.querySelector('.search-results');
+        // Available pages and content for search
+        const searchableContent = [
+            { title: 'Home', url: 'index.html' },
+            { title: 'About Us', url: 'about.html' },
+            { title: 'Services', url: 'services.html' },
+            { title: 'Technology', url: 'tech.html' },
+            { title: 'Programs', url: 'programs.html' },
+            { title: 'Contact', url: 'contact.html' },
+            { title: 'Blog', url: 'blog.html' },
+            // Services
+            { title: 'Post-operative Rehabilitation', url: 'services.html#post-op' },
+            { title: 'Sports Injury Recovery', url: 'services.html#sports' },
+            { title: 'Chronic Illness Management', url: 'services.html#chronic' },
+            { title: 'Neurological Rehabilitation', url: 'services.html#neuro' },
+            { title: 'Pediatric Rehabilitation', url: 'services.html#pediatric' },
+            // Technology
+            { title: 'VR Rehabilitation', url: 'tech.html#vr' },
+            { title: 'Robotic Therapy', url: 'tech.html#robotic' }
+        ];
 
-        if (searchInput && searchResults) {
-            searchInput.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                // Filter navigation items based on search term
-                const navItems = document.querySelectorAll('.nav-link');
-                const results = Array.from(navItems)
-                    .filter(item => item.textContent.toLowerCase().includes(searchTerm))
-                    .map(item => item.textContent);
+        const searchContainer = document.querySelector('.search-container');
+        if (!searchContainer) return;
 
-                // Display results
-                searchResults.innerHTML = results
-                    .map(result => `<div class="search-result-item">${result}</div>`)
+        const searchInput = searchContainer.querySelector('input[type="search"]');
+        const resultsContainer = searchContainer.querySelector('.search-results');
+        if (!searchInput || !resultsContainer) return;
+
+        // Initially hide results
+        resultsContainer.style.display = 'none';
+
+        // Handle search input
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                resultsContainer.style.display = 'none';
+                return;
+            }
+
+            // Filter content based on search term
+            const matchedResults = searchableContent.filter(item => 
+                item.title.toLowerCase().includes(searchTerm)
+            );
+
+            // Display results
+            if (matchedResults.length > 0) {
+                resultsContainer.innerHTML = matchedResults
+                    .map(result => `
+                        <div class="search-result-item" data-url="${result.url}">
+                            ${result.title}
+                        </div>
+                    `)
                     .join('');
-            });
-        }
+                resultsContainer.style.display = 'block';
+
+                // Add click handlers to results
+                const resultItems = resultsContainer.querySelectorAll('.search-result-item');
+                resultItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        window.location.href = item.dataset.url;
+                        resultsContainer.style.display = 'none';
+                        searchInput.value = '';
+                    });
+                });
+            } else {
+                resultsContainer.innerHTML = '<div class="search-result-item no-results">No results found</div>';
+                resultsContainer.style.display = 'block';
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchContainer.contains(e.target)) {
+                resultsContainer.style.display = 'none';
+            }
+        });
     }
+
 
     // Handle consultation modal
     function initializeConsultationModal() {
