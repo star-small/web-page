@@ -260,24 +260,28 @@
 
     // Initialize patient counter animation
     function initializePatientCounter() {
+        // Patient Counter Animation
         const counter = document.querySelector('.progress-count');
-        if (!counter) return; // Exit if counter element doesn't exist
+        const progressBar = document.querySelector('.progress-bar');
+        const targetCount = 5000;
+        let currentCount = 0;
 
-        let count = 0;
-        const target = 1000; // Total patients treated
-        const duration = 2000; // Animation duration in milliseconds
-        const step = function(timestamp) {
-            if (!start) start = timestamp;
-            const progress = timestamp - start;
-            count = Math.min(Math.floor((progress / duration) * target), target);
-            counter.textContent = count.toLocaleString();
-            if (progress < duration) {
-                window.requestAnimationFrame(step);
+        function updateCounter() {
+            if (currentCount < targetCount) {
+                currentCount += 50;
+                counter.textContent = currentCount.toLocaleString();
+                progressBar.style.width = (currentCount / targetCount * 100) + '%';
+                setTimeout(updateCounter, 50);
             }
-        };
-        let start = null;
-        window.requestAnimationFrame(step);
-    }
+        }
+
+        // Start counter when element is in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) updateCounter();
+        });
+        counterObserver.observe(counter);
+
+}
 
     // Initialize tech section progress bars
     function initializeTechProgress() {
