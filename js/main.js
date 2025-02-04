@@ -143,31 +143,7 @@
         }
     }
 
-    // Handle consultation modal
-    function initializeConsultationModal() {
-        const modal = document.getElementById('consultationModal');
-        if (modal) {
-            const form = modal.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formData = {
-                        name: form.querySelector('#name')?.value,
-                        email: form.querySelector('#email')?.value,
-                        phone: form.querySelector('#phone')?.value,
-                        date: form.querySelector('#preferredDate')?.value
-                    };
 
-                    if (validateForm(formData)) {
-                        console.log('Form submitted:', formData);
-                        alert('Thank you for your submission! We will contact you shortly.');
-                        modal.querySelector('button[data-bs-dismiss="modal"]').click();
-                        form.reset();
-                    }
-                });
-            }
-        }
-    }
 
 
 
@@ -175,23 +151,34 @@
     // Initialize patient counter animation
     function initializePatientCounter() {
         const counter = document.querySelector('.progress-count');
-        if (!counter) return; // Exit if counter element doesn't exist
-
-        let count = 0;
-        const target = 1000; // Total patients treated
-        const duration = 2000; // Animation duration in milliseconds
-        const step = function(timestamp) {
-            if (!start) start = timestamp;
-            const progress = timestamp - start;
-            count = Math.min(Math.floor((progress / duration) * target), target);
-            counter.textContent = count.toLocaleString();
-            if (progress < duration) {
-                window.requestAnimationFrame(step);
+        const progressBar = document.querySelector('.progress-bar');
+        const targetCount = 5000;
+        let currentCount = 0;
+        function updateCounter() {
+            if (currentCount < targetCount) {
+                currentCount += 50;
+                counter.textContent = currentCount.toLocaleString();
+                progressBar.style.width = (currentCount / targetCount * 100) + '%';
+                setTimeout(updateCounter, 50);
             }
-        };
-        let start = null;
-        window.requestAnimationFrame(step);
-    }
+        }
+        // Start counter when element is in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) updateCounter();
+        });
+        counterObserver.observe(counter);
+        // Lightbox functionality
+        const lightbox = document.getElementById('imageLightbox');
+        document.querySelectorAll('.gallery-image').forEach(image => {
+            image.addEventListener('click', () => {
+                lightbox.querySelector('img').src = image.src;
+                lightbox.classList.add('active');
+            });
+        });
+        lightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+        }
 
     // Initialize tech section progress bars
     function initializeTechProgress() {
@@ -213,23 +200,20 @@
         window.addEventListener('scroll', updateProgressBars, { passive: true });
     }
 
-    // Setup form handlers
     function setupFormHandlers() {
-        const forms = document.querySelectorAll('form');
+        const forms = document.querySelectorAll('form:not(.modal-form)'); // Explicitly exclude modal forms
         forms.forEach(form => {
-            if (!form.classList.contains('modal-form')) { // Skip modal forms as they're handled separately
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData.entries());
-                    
-                    if (validateForm(data)) {
-                        console.log('Form submitted successfully:', data);
-                        alert('Thank you for your submission! We will contact you shortly.');
-                        form.reset();
-                    }
-                });
-            }
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                if (validateForm(data)) {
+                    console.log('Form submitted successfully:', data);
+                    alert('Thank you for your submission! We will contact you shortly.');
+                    form.reset();
+                }
+            });
         });
     }
 
@@ -265,36 +249,67 @@
         }
     }
 
-    // Handle consultation booking
-    function handleConsultationBooking() {
-        const form = document.querySelector('#consultationModal form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
+// Handle consultation booking
+function handleConsultationBooking() {
+    const form = document.querySelector('#consultationModal form');
+    if (form) {
+        // Add modal-form class to prevent double handling
+        form.classList.add('modal-form');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            try {
+                // Collect form data
+                const formData = {
+                    name: form.querySelector('#name').value.trim(),
+                    phone: form.querySelector('#phone').value.trim(),
+                    email: form.querySelector('#email').value.trim(),
+                    date: form.querySelector('#preferredDate').value
+                };
                 
-                // Get form data
-                const name = form.querySelector('#name').value;
-                const age = parseInt(form.querySelector('#phone').value) || 30; // Using phone field for demo
+                // Individual validations with specific error messages
+                if (!validateName(formData.name)) {
+                    alert('Please enter a valid name (at least 2 characters)');
+                    return;
+                }
+                if (!validatePhoneNumber(formData.phone)) {
+                    alert('Please enter a valid phone number in format: +7 (XXX) XXX-XX-XX');
+                    return;
+                }
+                if (!validateEmail(formData.email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                if (!validateDate(formData.date)) {
+                    alert('Please select a valid future date');
+                    return;
+                }
+                
+                // If all validations pass, proceed with booking
+                const age = parseInt(formData.phone.replace(/\D/g, '').slice(-2)) || 30;
                 const selectedService = services[0]; // Default to first service for demo
+                const patient = new Patient(formData.name, age, [selectedService]);
                 
-                // Create new patient
-                const patient = new Patient(name, age, [selectedService]);
-                
-                // Calculate total cost with any applicable discounts
-                const totalCost = calculateTotalCost([selectedService], age);
+                // Calculate total cost with applicable discounts
+                const totalCost = calculateTotalCost([selectedService]);
+                const discountRate = getDiscountRate(age);
+                const finalCost = totalCost * (1 - discountRate);
                 
                 // Format appointment date
-                const appointmentDate = new Date(form.querySelector('#preferredDate').value);
+                const appointmentDate = new Date(formData.date);
                 const formattedDate = formatAppointmentDate(appointmentDate);
                 
                 // Display booking confirmation
                 alert(
                     `Booking Confirmation\n\n` +
                     `${patient.displayInfo()}\n` +
+                    `Contact: ${formData.phone}\n` +
+                    `Email: ${formData.email}\n` +
                     `Appointment: ${formattedDate}\n` +
                     `Service: ${selectedService.name}\n` +
-                    `Total Cost: ${totalCost.toLocaleString()} ₸` +
-                    (getDiscountRate(age) > 0 ? `\n(Includes ${getDiscountRate(age) * 100}% discount)` : '')
+                    `Total Cost: ${finalCost.toLocaleString()} ₸` +
+                    (discountRate > 0 ? `\n(Includes ${discountRate * 100}% discount)` : '')
                 );
                 
                 // Increment patient count
@@ -308,16 +323,20 @@
                 if (modal) {
                     modal.hide();
                 }
-            });
-        }
+            } catch (error) {
+                console.error('Booking error:', error);
+                alert('An error occurred while processing your booking. Please try again.');
+            }
+        });
     }
+}
 
     // 20. JS Events - Event handlers
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize all components
         try {
             initializeSearchBar();
-            initializeConsultationModal();
+            handleConsultationBooking();
             initializePatientCounter();
             initializeTechProgress();
             setupFormHandlers();
