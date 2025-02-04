@@ -331,6 +331,68 @@ function handleConsultationBooking() {
     }
 }
 
+
+// Typing animation function
+function typeText(element, text, speed = 50) {
+    let index = 0;
+    element.textContent = ''; // Clear existing text
+    
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Initialize typing animations
+function initializeTypingAnimations() {
+    // Mission text
+    const missionLead = document.querySelector('.mission-lead');
+    const missionText = document.querySelector('.mission-text');
+    
+    // Values text elements
+    const valuesList = document.querySelectorAll('.typing-value');
+    
+    // Observer for triggering animations when elements come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.typed) {
+                // Mark as typed to prevent re-typing
+                entry.target.dataset.typed = 'true';
+                
+                // If it's the mission section
+                if (entry.target.classList.contains('mission-lead')) {
+                    typeText(entry.target, entry.target.dataset.text, 50);
+                    // Start mission text after lead is complete
+                    setTimeout(() => {
+                        typeText(missionText, missionText.dataset.text, 30);
+                    }, entry.target.dataset.text.length * 50 + 500);
+                }
+                // If it's a value item
+                else if (entry.target.classList.contains('typing-value')) {
+                    typeText(entry.target, entry.target.dataset.text, 30);
+                }
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+    
+    // Observe mission elements if they exist
+    if (missionLead) observer.observe(missionLead);
+    if (missionText) observer.observe(missionText);
+    
+    // Observe each value item
+    valuesList.forEach(item => observer.observe(item));
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializeTypingAnimations);
+
     // 20. JS Events - Event handlers
     document.addEventListener('DOMContentLoaded', function() {
         // Initialize all components
@@ -341,6 +403,7 @@ function handleConsultationBooking() {
             initializeTechProgress();
             setupFormHandlers();
             initializeGallery();
+            initializeTypingAnimations();
         } catch (error) {
             console.error('Initialization error:', error);
         }
