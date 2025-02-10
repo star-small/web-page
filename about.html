@@ -318,7 +318,40 @@
             </div>
         </div>
     </section>
-
+<!-- Add this after your existing content in about.html -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Find Your Doctor</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body" id="doctorSearch">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="specialization" class="form-label">Specialization</label>
+                                <select class="form-select" id="specialization">
+                                    <option value="all">All Specializations</option>
+                                    <option value="orthopedics">Orthopedics</option>
+                                    <option value="neurology">Neurology</option>
+                                    <option value="cardiology">Cardiology</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="doctorName" class="form-label">Doctor Name</label>
+                                <input type="text" class="form-control" id="doctorName" placeholder="Search by name...">
+                            </div>
+                        </div>
+                        
+                        <div id="doctorList" class="mt-4">
+                            <!-- Doctor cards will be dynamically inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -379,4 +412,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/main.js"></script>
+
 </html>

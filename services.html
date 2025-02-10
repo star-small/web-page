@@ -372,6 +372,55 @@
         </div>
     </section>
 
+
+
+
+    
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Calories Burned Calculator</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body" id="caloriesCalculator">
+                        <div class="mb-4">
+                            <label for="walkingDistance" class="form-label">Distance Walked (km)</label>
+                            <input type="number" class="form-control" id="walkingDistance" min="0" step="0.1">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="foodType" class="form-label">Food Consumed</label>
+                            <select class="form-select" id="foodType">
+                                <option value="burger">Burger</option>
+                                <option value="pizza">Pizza Slice</option>
+                                <option value="rice">Rice Bowl</option>
+                                <option value="vegetables">Vegetable Salad</option>
+                                <option value="chicken-breast">Chicken Breast</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="foodQuantity" class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="foodQuantity" min="1" value="1">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h5>Progress Towards Calorie Balance</h5>
+                            <div class="progress">
+                                <div id="caloriesProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        
+                        <div id="caloriesResult" class="alert alert-info">
+                            Enter your activity and food data to see results
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -431,4 +480,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/main.js"></script>
+
 </html>

@@ -127,6 +127,28 @@
         .custom-btn:hover {
             transform: translateY(-2px);
         }
+        .time-slot {
+        min-width: 100px;
+        text-align: center;
+    }
+    
+    .time-slot.selected {
+        background-color: var(--primary-blue);
+        color: white;
+    }
+    
+    .time-slot:disabled {
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+        color: #6c757d;
+    }
+    
+    #calendar {
+        background: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
     </style>
 </head>
 <body>
@@ -374,7 +396,46 @@
         </div>
     </div>
 
-
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Schedule a Consultation</h2>
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card">
+                        <div class="card-body" id="appointmentSchedule">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="mb-4">Select Date</h4>
+                                    <div id="calendar" class="mb-4"></div>
+                                    <div class="selected-date-info alert alert-info" style="display: none;">
+                                        Selected date: <span id="selectedDate"></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <h4 class="mb-4">Available Time Slots</h4>
+                                    <div id="timeSlots" class="d-flex flex-wrap gap-2">
+                                        <!-- Time slots will be dynamically inserted here -->
+                                    </div>
+                                    
+                                    <div id="bookingConfirmation" class="mt-4" style="display: none;">
+                                        <div class="alert alert-success">
+                                            <h5>Booking Confirmation</h5>
+                                            <p class="mb-0">Your appointment is scheduled for:</p>
+                                            <p class="mb-0"><strong><span id="confirmationDateTime"></span></strong></p>
+                                        </div>
+                                        <button class="btn btn-primary mt-3" id="confirmBooking">
+                                            Confirm Booking
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
