@@ -217,61 +217,103 @@ $(document).ready(function() {
     }
 });
 
-// Custom Feature 2: Smart Rehabilitation Program Recommender
+// Smart Rehabilitation Program Recommender
 $(document).ready(function() {
-    const programRecommender = $('#programRecommender');
-    
-    if (programRecommender.length) {
-        const questions = [
-            {
-                id: 'painLevel',
-                text: 'What is your current pain level? (1-10)',
-                type: 'range',
-                min: 1,
-                max: 10
-            },
-            {
-                id: 'mobility',
-                text: 'How would you rate your current mobility?',
-                type: 'select',
-                options: ['Limited', 'Moderate', 'Good']
-            },
-            {
-                id: 'goals',
-                text: 'What are your primary rehabilitation goals?',
-                type: 'checkbox',
-                options: ['Pain Management', 'Improved Mobility', 'Return to Sports', 'Daily Activities']
-            }
-        ];
+    // Handle recommendation button click using event delegation
+    $(document).on('click', '#submitAnswers', function(e) {
+        e.preventDefault();
         
-        // Generate question form
-        programRecommender.html(questions.map(question => `
-            <div class="mb-3">
-                <label class="form-label">${question.text}</label>
-                ${generateQuestionInput(question)}
-            </div>
-        `).join(''));
+        // Collect form data
+        const formData = {
+            painLevel: $('#painLevel').val(),
+            mobility: $('#mobility').val(),
+            goals: []
+        };
         
-        // Process answers and recommend program
-        $('#submitAnswers').on('click', function() {
-            const answers = collectAnswers();
-            const recommendation = generateRecommendation(answers);
-            
-            $('#recommendationResult').fadeOut(400, function() {
-                $(this).html(`
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Recommended Program</h5>
-                            <p class="card-text">${recommendation.program}</p>
-                            <p class="card-text">${recommendation.description}</p>
+        // Collect checked goals
+        $('input[type="checkbox"]:checked').each(function() {
+            formData.goals.push($(this).val());
+        });
+        
+        // Validate that at least one goal is selected
+        if (formData.goals.length === 0) {
+            alert('Please select at least one rehabilitation goal');
+            return;
+        }
+        
+        // Generate recommendation
+        const recommendation = generateRecommendation(formData);
+        
+        // Display recommendation with animation
+        $('#recommendationResult').fadeOut(300, function() {
+            $(this).html(`
+                <div class="card border-primary mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Your Personalized Recommendation</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">${recommendation.program}</h4>
+                        <p class="card-text">${recommendation.description}</p>
+                        <div class="mt-4">
+                            <h5>Program Features:</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Personalized Exercise Plan
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Progress Tracking
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    Regular Assessments
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="contact.html#appointmentSchedule" class="btn btn-primary btn-lg">
+                                Schedule Consultation
+                                <i class="fas fa-calendar-alt ms-2"></i>
+                            </a>
                         </div>
                     </div>
-                `).fadeIn();
-            });
+                </div>
+            `).fadeIn(300);
         });
-    }
+    });
+    
+    // Add real-time feedback for pain level
+    $('#painLevel').on('input', function() {
+        const value = $(this).val();
+        let painText = 'Moderate';
+        if (value <= 3) painText = 'Mild';
+        if (value >= 7) painText = 'Severe';
+        $(this).next('.d-flex').find('small').removeClass('text-primary');
+        $(this).next('.d-flex').find('small:contains(' + painText + ')').addClass('text-primary');
+    });
 });
 
+// Helper function to generate recommendation
+function generateRecommendation(data) {
+    let program, description;
+    
+    if (data.painLevel >= 7) {
+        program = 'Intensive Care Program';
+        description = 'A carefully monitored program focusing on pain management and gradual mobility improvement, with regular assessments and adjustments.';
+    } else if (data.mobility === 'Limited') {
+        program = 'Progressive Mobility Program';
+        description = 'Structured program designed to improve mobility and strength through personalized exercises and advanced rehabilitation techniques.';
+    } else if (data.goals.includes('Return to Sports')) {
+        program = 'Athletic Performance Recovery Program';
+        description = 'Specialized program for athletes focusing on sport-specific rehabilitation and performance enhancement, with advanced monitoring.';
+    } else {
+        program = 'Standard Rehabilitation Program';
+        description = 'Comprehensive program balancing recovery and functional improvement, tailored to your specific needs and goals.';
+    }
+    
+    return { program, description };
+}
 // Helper functions
 function simulateEmailCheck(email) {
     // Simulate API call to check email availability

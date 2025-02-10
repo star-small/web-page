@@ -336,6 +336,56 @@
         </div>
     </section>
 
+<!-- Add this to programs.html after the existing content -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Track Your Recovery Progress</h2>
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card">
+                    <div class="card-body" id="recoveryProgressTracker">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <canvas id="progressChart"></canvas>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="progress-inputs">
+                                    <h4 class="mb-3">Update Progress</h4>
+                                    <div class="mb-3">
+                                        <label for="progressMetric" class="form-label">Select Metric</label>
+                                        <select class="form-select" id="progressMetric">
+                                            <option value="range">Range of Motion</option>
+                                            <option value="strength">Strength</option>
+                                            <option value="pain">Pain Level</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="progressValue" class="form-label">Value (0-100)</label>
+                                        <input type="number" class="form-control" id="progressValue" min="0" max="100">
+                                    </div>
+                                    <button class="btn btn-primary" id="addProgress">
+                                        Add Progress Update
+                                    </button>
+                                </div>
+                                
+                                <div class="progress-summary mt-4">
+                                    <h5>Recovery Summary</h5>
+                                    <div class="alert alert-info">
+                                        <div id="progressSummary">
+                                            <!-- Summary will be dynamically updated -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -396,4 +446,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/main.js"></script>
+
 </html>
