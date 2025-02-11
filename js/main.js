@@ -1,47 +1,46 @@
-// jQuery Enhancements for RC Clinic Website
 
-// 1. Complete Registration Form Enhancement
+// 1. Registration Form
 $(document).ready(function() {
     const registrationForm = $('#registrationForm');
-    
+
     if (registrationForm.length) {
         registrationForm.on('submit', function(e) {
             e.preventDefault();
-            
+
             const name = $('#name').val();
             const email = $('#email').val();
             const password = $('#password').val();
             const phone = $('#phone').val();
             const dob = $('#dob').val();
-            
+
             // Validation
             let isValid = true;
             const errors = [];
-            
+
             // Name validation
             if (!/^[a-zA-Z\s]{2,30}$/.test(name)) {
                 isValid = false;
                 errors.push('Name should be 2-30 characters long and contain only letters');
             }
-            
+
             // Email validation
             if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
                 isValid = false;
                 errors.push('Please enter a valid email address');
             }
-            
+
             // Password validation (minimum 8 characters, at least one number and one special character)
             if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/.test(password)) {
                 isValid = false;
                 errors.push('Password must be at least 8 characters long and contain at least one number and one special character');
             }
-            
+
             // Phone validation (Kazakhstan format)
             if (!/^\+7\s?\([0-9]{3}\)\s?[0-9]{3}-[0-9]{2}-[0-9]{2}$/.test(phone)) {
                 isValid = false;
                 errors.push('Please enter a valid phone number in format: +7(XXX)XXX-XX-XX');
             }
-            
+
             // Date of Birth validation (must be at least 18 years old)
             const dobDate = new Date(dob);
             const today = new Date();
@@ -50,7 +49,7 @@ $(document).ready(function() {
                 isValid = false;
                 errors.push('You must be at least 18 years old to register');
             }
-            
+
             if (!isValid) {
                 $('#errorMessages').html(errors.map(error => `<div class="alert alert-danger">${error}</div>`).join(''));
                 $('#errorMessages').slideDown();
@@ -73,7 +72,7 @@ $(document).ready(function() {
 // 2. Calories Burned Calculator
 $(document).ready(function() {
     const caloriesCalculator = $('#caloriesCalculator');
-    
+
     if (caloriesCalculator.length) {
         const foodCalories = {
             burger: 354,
@@ -82,21 +81,21 @@ $(document).ready(function() {
             vegetables: 65,
             'chicken-breast': 165
         };
-        
+
         caloriesCalculator.on('change', 'select, input', function() {
             const distance = parseFloat($('#walkingDistance').val()) || 0;
             const foodType = $('#foodType').val();
             const quantity = parseInt($('#foodQuantity').val()) || 0;
-            
+
             // Calculate calories burned (average person burns 60 calories per km walked)
             const caloriesBurned = distance * 60;
             const caloriesConsumed = foodCalories[foodType] * quantity;
             const additionalWalkingNeeded = Math.max(0, (caloriesConsumed - caloriesBurned) / 60);
-            
+
             // Update progress bar
             const progressPercentage = Math.min(100, (caloriesBurned / caloriesConsumed) * 100);
             $('#caloriesProgress').css('width', progressPercentage + '%');
-            
+
             // Update results
             $('#caloriesResult').html(`
                 <p>Calories consumed: ${caloriesConsumed}</p>
@@ -110,7 +109,7 @@ $(document).ready(function() {
 // 3. Doctor Search Filter
 $(document).ready(function() {
     const doctorSearch = $('#doctorSearch');
-    
+
     if (doctorSearch.length) {
         const doctors = [
             { name: 'Dr. Azamat Nurlybekov', specialization: 'orthopedics' },
@@ -118,19 +117,19 @@ $(document).ready(function() {
             { name: 'Dr. Ruslan Mammadov', specialization: 'cardiology' },
             // Add more doctors as needed
         ];
-        
+
         // Initialize autocomplete
         $('#doctorName').autocomplete({
             source: doctors.map(doctor => doctor.name)
         });
-        
+
         // Specialization filter
         $('#specialization').on('change', function() {
             const selectedSpec = $(this).val();
-            const filteredDoctors = selectedSpec === 'all' ? 
-                doctors : 
+            const filteredDoctors = selectedSpec === 'all' ?
+                doctors :
                 doctors.filter(doctor => doctor.specialization === selectedSpec);
-            
+
             // Update doctor list with animation
             const doctorList = $('#doctorList');
             doctorList.fadeOut(400, function() {
@@ -148,7 +147,7 @@ $(document).ready(function() {
 // 4. Schedule of Available Consultation Appointments
 $(document).ready(function() {
     const appointmentSchedule = $('#appointmentSchedule');
-    
+
     if (appointmentSchedule.length) {
         // Initialize calendar
         const calendar = $('#calendar').datepicker({
@@ -158,12 +157,12 @@ $(document).ready(function() {
                 updateTimeSlots(dateText);
             }
         });
-        
+
         function updateTimeSlots(date) {
             // Simulate available time slots
             const availableSlots = generateTimeSlots(date);
             const timeSlotContainer = $('#timeSlots');
-            
+
             timeSlotContainer.fadeOut(400, function() {
                 timeSlotContainer.html(availableSlots.map(slot => `
                     <button class="btn btn-outline-primary m-1 time-slot" 
@@ -180,7 +179,7 @@ $(document).ready(function() {
 // Custom Feature 1: Interactive Recovery Progress Tracker
 $(document).ready(function() {
     const progressTracker = $('#recoveryProgressTracker');
-    
+
     if (progressTracker.length) {
         // Initialize charts
         const ctx = document.getElementById('progressChart').getContext('2d');
@@ -204,7 +203,7 @@ $(document).ready(function() {
                 }
             }
         });
-        
+
         // Add progress update functionality
         $('#addProgress').on('click', function() {
             const newValue = parseInt($('#progressValue').val());
@@ -222,28 +221,28 @@ $(document).ready(function() {
     // Handle recommendation button click using event delegation
     $(document).on('click', '#submitAnswers', function(e) {
         e.preventDefault();
-        
+
         // Collect form data
         const formData = {
             painLevel: $('#painLevel').val(),
             mobility: $('#mobility').val(),
             goals: []
         };
-        
+
         // Collect checked goals
         $('input[type="checkbox"]:checked').each(function() {
             formData.goals.push($(this).val());
         });
-        
+
         // Validate that at least one goal is selected
         if (formData.goals.length === 0) {
             alert('Please select at least one rehabilitation goal');
             return;
         }
-        
+
         // Generate recommendation
         const recommendation = generateRecommendation(formData);
-        
+
         // Display recommendation with animation
         $('#recommendationResult').fadeOut(300, function() {
             $(this).html(`
@@ -282,7 +281,7 @@ $(document).ready(function() {
             `).fadeIn(300);
         });
     });
-    
+
     // Add real-time feedback for pain level
     $('#painLevel').on('input', function() {
         const value = $(this).val();
@@ -297,7 +296,7 @@ $(document).ready(function() {
 // Helper function to generate recommendation
 function generateRecommendation(data) {
     let program, description;
-    
+
     if (data.painLevel >= 7) {
         program = 'Intensive Care Program';
         description = 'A carefully monitored program focusing on pain management and gradual mobility improvement, with regular assessments and adjustments.';
@@ -311,7 +310,7 @@ function generateRecommendation(data) {
         program = 'Standard Rehabilitation Program';
         description = 'Comprehensive program balancing recovery and functional improvement, tailored to your specific needs and goals.';
     }
-    
+
     return { program, description };
 }
 // Helper functions
